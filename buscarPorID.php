@@ -25,6 +25,9 @@ while ($row = $result->fetch_assoc()) {
     $anio_llegada = $row['anio_llegada'];
     $comuna = $row['comuna'];
     $region = $row['region'];
+    $pais = $row['pais'];
+    $latitud = $row['lat'];
+    $longitud = $row['lon'];
   
 }
 
@@ -42,7 +45,10 @@ $json = array(
     'profesion' => $profesion,
     'anio_llegada' => $anio_llegada,
     'comuna' => $comuna,
-    'region' => $region
+    'region' => $region,
+    'pais' => $pais,
+    'latitud' => $latitud,
+    'longitud' => $longitud
 );
 
 echo json_encode($json);

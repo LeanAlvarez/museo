@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	
 	
 
 
@@ -224,13 +224,8 @@ $(document).ready(function() {
 
 
 
-//si apretamos la cruz de cerrar, se refresca la página
-// $('#cruz').click(function(){
-// 	location.reload();
-// });
 
 
-//si input resultado esta vacio,
 
 
 		

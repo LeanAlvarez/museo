@@ -1,4 +1,5 @@
 $(document ).ready(function() {
+    
 //busca todos los datos
 function buscarDatos(consulta){
     $.ajax({
@@ -100,6 +101,7 @@ function buscoDatosPorId(id){
             $("#infoComuna").html("<p>Sin Datos</p>");
         }else{
             $("#infoComuna").html(datos.comuna);
+            comuna = localStorage.setItem("comuna", datos.comuna);
         }
 
         //region
@@ -109,6 +111,33 @@ function buscoDatosPorId(id){
         }else{
             $("#infoRegion").html(datos.region);
         }
+
+        //pais
+        console.log(datos.pais);
+        if(datos.pais == null){
+            $("#infoPais").html("<p>Sin Datos</p>");
+        }else{
+            $("#infoPais").html(datos.pais);
+            pais = localStorage.setItem("pais", datos.pais);
+        }
+
+        //latitud   
+        console.log(datos.latitud);
+        if(datos.latitud == null){
+            console.log("no hay dato");
+        }else{
+            localStorage.setItem("lat", datos.latitud);
+
+        }
+
+        //longitud
+        console.log(datos.longitud);
+        if(datos.longitud == null){
+            console.log("no hay dato");
+        }else{
+            localStorage.setItem("lon", datos.longitud);
+        }
+
 
 
 

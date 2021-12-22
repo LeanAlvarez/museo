@@ -692,3 +692,12 @@ h1.h1-perfil-persona {
 }
 
 /* FIN resultados ubicación */
+
+
+/* scroll */
+
+#ulScroll{
+    overflow-y: scroll;
+    height: 919.992px;
+    width: 1529.600px;
+}

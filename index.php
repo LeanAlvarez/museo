@@ -54,7 +54,7 @@
 
 				$conexion = $conectar;
 				$salida = "" ;
-				$query = "SELECT * FROM datos ORDER BY id LIMIT 10";
+				$query = "SELECT * FROM datos ORDER BY id LIMIT 750";
 
 
 				if(isset($_POST['consulta'])){
@@ -71,7 +71,7 @@
 				if($resultado->num_rows > 0){
 				
 					
-					$salida.= "<ul><ul>";
+					$salida.= "<ul id='ulScroll'><ul>";
 
 
 					
@@ -98,13 +98,13 @@
 
 
 			
-			<div class="navegador-resultados">
+			<!-- <div class="navegador-resultados">
 					<img src="img/back.svg" alt="Anterior" id="anterior"/> 
 					<img src="img/next.svg" alt="Siguiente" id="siguiente"/>
 			
 	   				
 	</div>
-					
+					 -->
 </section>
 		
 				
@@ -158,13 +158,29 @@
 		tileSize: 512,
 		zoomOffset: -1
 	}).addTo(mymap);
+
+	//obtener los datos localstorage
+
+	lon = localStorage.getItem("lon");
+	lat = localStorage.getItem("lat");
+	comuna = localStorage.getItem("comuna");
+	pais = localStorage.getItem("pais");
+
+	console.log("pais: " + pais + " comuna: " + comuna + " lat: " + lat + " lon: " + lon);
 	
-	var marker = L.marker([46.21135, 7.3982]).addTo(mymap);
-	marker.bindTooltip("Vex - Suiza").openTooltip();
+	var marker = L.marker([lat, lon]).addTo(mymap);
+	marker.bindTooltip(comuna + "-" + pais).openTooltip();
 	
 	
-		
-	var marker = L.marker([-32.21263320767636, -58.21994502077426]).addTo(mymap);
+
+
+	
+
+
+	
+		//-32.21263320767636
+		//-58.21994502077426
+	var marker = L.marker([ lat, lon]).addTo(mymap);
 	marker.bindTooltip("Estás aquí").openTooltip();
 	
 
