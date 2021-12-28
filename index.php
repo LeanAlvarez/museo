@@ -51,30 +51,38 @@
   <section class="resultados">
 			
 			<?php
-
+				//conecto la bd
 				$conexion = $conectar;
+				//asigno la variable principal
 				$salida = "" ;
+				//creo el query con el limite total, para scrollear
 				$query = "SELECT * FROM datos ORDER BY id LIMIT 750";
 
-
+				//compruebo la consulta
 				if(isset($_POST['consulta'])){
 					$q=$conexion->real_escape_string($_POST['consulta']);
-
+					//asigno la consulta en base a la letra apretada
 					$query = "SELECT * FROM datos WHERE apellido LIKE '%" .$q. "%' OR nombre LIKE '%" .$q."'";
 					
 					
 				}
 				
-			
+				//paso la query a la conexion
 				$resultado=$conexion->query($query);
+				//variable para mostrar en el caso de que no exista apellido
 				$noHay = "No hay resultados con ese apellido";
-				if($resultado->num_rows > 0){
 				
+				//compruebo si las filas afectadas son mayores que 0
+				if($resultado->num_rows > 0){
 					
+					
+						
+
+					// a la variable principal le asigno el ul y el id para generar el scroll
 					$salida.= "<ul id='ulScroll'><ul>";
 
 
-					
+					//mientras haya datos los asigna a la variable salida y los va iterando
 
 					while($fila = $resultado->fetch_assoc()){
 					
@@ -83,11 +91,12 @@
 					}
 					
 					}else{
+						//si no hay un apellido que coincida con las letras apretadas se le asigna la variable antes inicializada y se muestra 
 						$salida.= "<ul><li class='resultadoPersona'>". $noHay . "</li></ul>"; 
 					}   
 
 				
-
+					//salida
 				echo $salida;
 				
 				
@@ -95,16 +104,6 @@
 
 
 			?>
-
-
-			
-			<!-- <div class="navegador-resultados">
-					<img src="img/back.svg" alt="Anterior" id="anterior"/> 
-					<img src="img/next.svg" alt="Siguiente" id="siguiente"/>
-			
-	   				
-	</div>
-					 -->
 </section>
 		
 				
@@ -124,10 +123,10 @@
 
 <h1 class="h1-perfil-persona"></h1>
 		<ul class="info-persona">
-			<li>Cónyuge:<strong class="infoConyugue"></strong></li>
-			<li>Edad:<strong class="infoEdad"></strong></li>
-			<li>Hijos:<strong class="infoHijos"></strong> </li>
-			<li>Profesión:<strong class="infoProfesion"></strong> </li>
+			<li>Cónyuge: <strong class="infoConyugue"></strong></li>
+			<li>Edad: <strong class="infoEdad"></strong></li>
+			<li>Hijos: <strong class="infoHijos"></strong> </li>
+			<li>Profesión: <strong class="infoProfesion"></strong> </li>
 			<li>Partió a San José en: <strong class="infoPartida"></strong></li>
 		
 		</ul>
@@ -245,35 +244,75 @@
 	  
 	  <div class="navegador"><img src="img/back.svg" alt="Atrás" class="back-ubicacion"/> <img src="img/close.svg" alt="Cerrar" id="close" onClick="document.location.reload(true)"/></div>
 	  
-<h1 class="h1-perfil-persona">Otras personas de...</h1>
+<h1 class="h1-perfil-persona-lugar">Otras personas de...</h1>
 	  <ul class="info-procedencia">
 			<li><h2>País</h2>
-				Suiza
+			<span class="ubicacion-btn" id="infoPais-lugar"></span>
 			</li>
 			<li><h2>Comuna</h2>
-				Vex
+			<span class="ubicacion-btn" id="infoComuna-lugar"></span>
 			</li>
 			<li><h2>Región</h2>
-				Cantón de Valais
+			<span class="ubicacion-btn" id="infoRegion-lugar"></span>
 			</li>	
 		</ul>
-	  
-		<ul>
-<li class="resultado-ubicacion">Micheloud Vicent</li>
-<li>Rudaz Jean</li>
-<li>Morend Francois</li>
-<li>Crettaz Barthélémy</li>
-<li>Micheloud Antonie</li>
-<li>Micheloud Marie</li>
-<li>Morend Sébastien</li>
-<li>Rudaz Jean</li>
-<li>Morend Francois</li>
-<li>Crettaz Barthélémy</li>
-<li>Micheloud Antonie</li>
-<li>Micheloud Marie</li>
-		</ul>
- <div class="navegador-resultados"><img src="img/back.svg" alt="Anterior"/> <img src="img/next.svg" alt="Siguiente"/></div>
-	</div>
+		
+	
+		<section class="resultados-lugar">
+			
+			<?php
+
+
+				
+
+				//conecto la bd
+				$conexion = $conectar;
+				//asigno la variable principal
+				$salida = "" ;
+				//creo el query con el limite total, para scrollear
+				$query = "SELECT * FROM datos ORDER BY id LIMIT 750";
+
+				
+				
+				//paso la query a la conexion
+				$resultado=$conexion->query($query);
+				//variable para mostrar en el caso de que no exista apellido
+				$noHay = "No hay resultados con ese apellido";
+				
+				//compruebo si las filas afectadas son mayores que 0
+				if($resultado->num_rows > 0){
+					
+					
+						
+
+					// a la variable principal le asigno el ul y el id para generar el scroll
+					$salida.= "<ul id='ulScroll'><ul>";
+
+
+					//mientras haya datos los asigna a la variable salida y los va iterando
+
+					while($fila = $resultado->fetch_assoc()){
+					
+						$salida.= "<li class='resultado-ubicacion' class='muestraPerfil'><a class='resultadoPersona' id='".$fila['id']."' >" .$fila['nombre']. " " .$fila['apellido']. "</a></li>";
+						
+					}
+					
+					}else{
+						//si no hay un apellido que coincida con las letras apretadas se le asigna la variable antes inicializada y se muestra 
+						$salida.= "<ul><li class='resultadoPersona'>". $noHay . "</li></ul>"; 
+					}   
+
+				
+					//salida
+				echo $salida;
+				
+				
+
+
+
+			?>
+</section>
+		
 	
 <!-- FIN Resultados búsqueda ubicación -->	
 	

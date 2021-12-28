@@ -4,9 +4,9 @@ header('Content-Type: application/json; charset=utf-8');
 //abro la conexion
 
 //busco por id
-$id = $_POST['id'];
+$comuna = $_POST['comuna'];
 
-$sql = "SELECT * FROM datos WHERE id = $id";
+$sql = "SELECT * FROM datos WHERE comuna = '$comuna'";
 
 $conn = include("conexion.php");
 //corro la query
@@ -30,6 +30,7 @@ while ($row = $result->fetch_assoc()) {
     $longitud = $row['lon'];
   
 }
+
 
 
 

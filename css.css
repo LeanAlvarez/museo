@@ -436,6 +436,17 @@ h1.h1-perfil-persona {
 
 }
 
+
+h1.h1-perfil-persona-lugar {
+	margin-top:100px;
+	font-size: 5rem;
+	text-align: left;
+	line-height: 5.5rem;
+	transition: .5s ease-in-out;
+
+}
+
+
 .perfil-persona ul.info-persona {
 	margin-top:75px;
 }
