@@ -86,7 +86,7 @@
 
 					while($fila = $resultado->fetch_assoc()){
 					
-						$salida.= "<li class='resultado' class='muestraPerfil'><a class='resultadoPersona' id='".$fila['id']."' >" .$fila['nombre']. " " .$fila['apellido']. "</a></li>";
+						$salida.= "<li class='resultado' class='muestraPerfil'><a class='resultadoPersona' id='".$fila['id']."'>" .$fila['nombre']. " " .$fila['apellido']. " </a></li>";
 						
 					}
 					
@@ -99,7 +99,7 @@
 					//salida
 				echo $salida;
 				
-				
+					
 
 
 
